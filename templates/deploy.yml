@@ -1,0 +1,13 @@
+name: Deploy Template
+on:
+  workflow_call:
+    inputs:
+      service: { required: true, type: string }
+      environment: { required: true, type: string }
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "Deploying ${{ inputs.service }} to ${{ inputs.environment }}"
